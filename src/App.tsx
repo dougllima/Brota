@@ -1,10 +1,12 @@
 import React from 'react';
+import CssBaseline from '@material-ui/core/CssBaseline';
 
-function App() {
+function App(): React.ReactElement {
   return (
-    <React.Fragment>
+    <>
+      <CssBaseline />
       Teste
-    </React.Fragment>
+    </>
   );
 }
 
