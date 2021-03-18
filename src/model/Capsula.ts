@@ -1,8 +1,8 @@
-import { Base, Intervalo } from './Base';
+import { Intervalo } from './Base';
 import moment from 'moment';
 import Planta from './Planta';
 
-export default class Capsula extends Base {
+export default class Capsula {
   planta?: Planta;
   dataPlantio?: moment.Moment;
   diasGerminacao: Intervalo = {};
@@ -10,7 +10,9 @@ export default class Capsula extends Base {
   tempoDeVida: Intervalo = {};
 
   constructor(data: Partial<Capsula> = {}) {
-    super(data);
+    if (data) {
+      this.fromObject(data);
+    }
 
     if (data.dataPlantio) {
       this.calculaPrazos();
@@ -33,6 +35,10 @@ export default class Capsula extends Base {
       this.dataPlantio,
       this.planta.tempoDeVida,
     );
+  }
+
+  public fromObject(data = {}, instance = this): void {
+    Object.assign(instance, data);
   }
 
   private somaDatas(data: moment.Moment, intervalo: Intervalo): Intervalo {

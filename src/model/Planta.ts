@@ -1,7 +1,7 @@
 import moment from 'moment';
-import { Base, Intervalo } from './Base';
+import { Intervalo } from './Base';
 
-export default class Planta extends Base {
+export default class Planta {
   nome?: string;
   familia?: string;
   origem?: string;
@@ -12,7 +12,13 @@ export default class Planta extends Base {
   iluminacaoPorDia?: moment.Duration;
   obs?: string;
 
-  constructor(data: Partial<Planta> = {}) {
-    super(data);
+  public constructor(data = {}) {
+    if (data) {
+      this.fromObject(data);
+    }
+  }
+
+  public fromObject(data = {}, instance = this): void {
+    Object.assign(instance, data);
   }
 }
