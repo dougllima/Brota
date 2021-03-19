@@ -1,8 +1,17 @@
 import moment from 'moment';
-import Planta from '../../model/Planta';
+import Planta, { ListaPlantas, NOMES_PLANTAS } from '../../model/Planta';
 
-export default [
-  new Planta({
+export const minhasPlantinhas: NOMES_PLANTAS[] = [
+  NOMES_PLANTAS.rucula,
+  NOMES_PLANTAS.pimenta,
+  NOMES_PLANTAS.oregano,
+  NOMES_PLANTAS.manjericao,
+  NOMES_PLANTAS.cebolinha,
+  NOMES_PLANTAS.hortela,
+];
+
+export default {
+  alecrim: new Planta({
     nome: 'Alecrim Rosmarino',
     familia: 'Lamiaceae',
     origem: 'Mediterrâneo',
@@ -21,7 +30,7 @@ export default [
     clima: { inicio: 16, fim: 35 },
     iluminacaoPorDia: moment.duration({ hours: 5 }),
   }),
-  new Planta({
+  alface: new Planta({
     nome: 'Alface Baby Leaf',
     familia: 'Asteraceae',
     origem: 'Mediterrâneo',
@@ -41,7 +50,7 @@ export default [
     iluminacaoPorDia: moment.duration({ hours: 5 }),
     obs: 'Ao colher, retire as folhas mais externas!',
   }),
-  new Planta({
+  camomila: new Planta({
     nome: 'Camomila Húngara',
     familia: 'Asteraceae',
     origem: 'Europa e Norte da África',
@@ -61,7 +70,7 @@ export default [
     iluminacaoPorDia: moment.duration({ hours: 6 }),
     obs: 'Ao colher, opte por flores mais jovens!',
   }),
-  new Planta({
+  cebolinha: new Planta({
     nome: 'Cebolinha Verde',
     familia: 'Amarylidaceae',
     origem: 'China e Sibéria',
@@ -80,7 +89,7 @@ export default [
     iluminacaoPorDia: moment.duration({ hours: 4 }),
     obs: 'Cuidado com o vento!',
   }),
-  new Planta({
+  coentro: new Planta({
     nome: 'Coentro Português',
     familia: 'Apiaceae',
     origem: 'Mediterrâneo',
@@ -98,7 +107,7 @@ export default [
     clima: { inicio: 20, fim: 30 },
     iluminacaoPorDia: moment.duration({ hours: 4 }),
   }),
-  new Planta({
+  hortela: new Planta({
     nome: 'Hortelã',
     familia: 'Lamiaceae',
     origem: 'Mediterrâneo',
@@ -117,7 +126,7 @@ export default [
     iluminacaoPorDia: moment.duration({ hours: 6 }),
     obs: 'Proteja suas plantinhas do vento!',
   }),
-  new Planta({
+  manjericao: new Planta({
     nome: 'Manjericão Italiano',
     familia: 'Lamiaceae',
     origem: 'Ásia e África',
@@ -137,7 +146,7 @@ export default [
     iluminacaoPorDia: moment.duration({ hours: 6 }),
     obs: 'Pode suas florzinhas!',
   }),
-  new Planta({
+  oregano: new Planta({
     nome: 'Orégano Bravo-Europeu',
     familia: 'Lamiaceae',
     origem: 'Sul da Europa',
@@ -157,7 +166,7 @@ export default [
     iluminacaoPorDia: moment.duration({ hours: 6 }),
     obs: 'Quanto mais sol, mais sabor!',
   }),
-  new Planta({
+  pimenta: new Planta({
     nome: 'Pimenta Calabresa',
     familia: 'Solanaceae',
     origem: 'Entre Bolívia e Peru',
@@ -176,7 +185,7 @@ export default [
     clima: { inicio: 16, fim: 35 },
     iluminacaoPorDia: moment.duration({ hours: 6 }),
   }),
-  new Planta({
+  rucula: new Planta({
     nome: 'Rúcula Rokita',
     familia: 'Brassicaceae',
     origem: 'Mediterrâneo e Ásia Ocidental',
@@ -196,7 +205,7 @@ export default [
     iluminacaoPorDia: moment.duration({ hours: 5 }),
     obs: 'Quanto mais quente, mais amargas!',
   }),
-  new Planta({
+  salsa: new Planta({
     nome: 'Salsa Hortense',
     familia: 'Apiaceae',
     origem: 'Mediterrâneo',
@@ -215,4 +224,4 @@ export default [
     iluminacaoPorDia: moment.duration({ hours: 5 }),
     obs: 'Pode suas florzinhas!',
   }),
-];
+} as ListaPlantas;

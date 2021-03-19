@@ -1,9 +1,10 @@
 import { Intervalo } from './Base';
 import moment from 'moment';
-import Planta from './Planta';
+import Plantas from '../assets/data/Plantas';
+import Planta, { NOMES_PLANTAS } from './Planta';
 
 export default class Capsula {
-  planta?: Planta;
+  planta: NOMES_PLANTAS = NOMES_PLANTAS.alecrim;
   dataPlantio?: moment.Moment;
   diasGerminacao: Intervalo = {};
   diasColheita: Intervalo = {};
@@ -24,16 +25,19 @@ export default class Capsula {
       return;
     }
 
-    this.diasColheita = this.somaDatas(this.dataPlantio, this.planta.colheita);
+    this.diasColheita = this.somaDatas(
+      this.dataPlantio,
+      (Plantas[this.planta] as Planta).colheita,
+    );
 
     this.diasGerminacao = this.somaDatas(
       this.dataPlantio,
-      this.planta.germinacao,
+      (Plantas[this.planta] as Planta).germinacao,
     );
 
     this.tempoDeVida = this.somaDatas(
       this.dataPlantio,
-      this.planta.tempoDeVida,
+      (Plantas[this.planta] as Planta).tempoDeVida,
     );
   }
 

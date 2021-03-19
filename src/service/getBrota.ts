@@ -1,27 +1,19 @@
 import moment from 'moment';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
+import { minhasPlantinhas } from '../assets/data/Plantas';
 
 import Brota from '../model/Brota';
 import Capsula from '../model/Capsula';
-import Planta from '../model/Planta';
-import getPlantas from './getPlantas';
 
 export default (): Observable<Brota> => {
-  return getPlantas().pipe(
-    map((plantas: Planta[]): Capsula[] => {
-      return plantas.map(
-        item =>
-          new Capsula({
-            planta: item,
-            dataPlantio: moment('13/03/2021', 'DD/MM/YYYY'),
-          }),
-      );
-    }),
-    map(
-      (capsulas: Capsula[]): Brota => {
-        return new Brota({ capsulas });
-      },
+  const result: Capsula[] = [];
+  minhasPlantinhas.forEach(item =>
+    result.push(
+      new Capsula({
+        planta: item,
+        dataPlantio: moment('13/03/2021', 'DD/MM/YYYY'),
+      }),
     ),
   );
+  return of(new Brota({ capsulas: result }));
 };
